@@ -1,4 +1,4 @@
-package com.example.rickandmortyapp.domain
+package com.example.rickandmortyapp.domain.model
 
 data class Character(
     val created: String,

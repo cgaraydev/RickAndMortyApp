@@ -9,6 +9,7 @@ import com.example.rickandmortyapp.data.local.CharacterEntity
 import com.example.rickandmortyapp.data.local.RickAndMortyDatabase
 import com.example.rickandmortyapp.data.remote.RickAndMortyApi
 import com.example.rickandmortyapp.data.remote.RickAndMortyRemoteMediator
+import com.example.rickandmortyapp.domain.repositories.RickAndMortyRepository
 import com.example.rickandmortyapp.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -61,4 +62,9 @@ object AppModule {
             pagingSourceFactory = { db.dao.pagingSource() }
         )
     }
+
+    @Provides
+    @Singleton
+    fun provideRickAndMortyRepository(api: RickAndMortyApi) = RickAndMortyRepository(api)
+
 }
