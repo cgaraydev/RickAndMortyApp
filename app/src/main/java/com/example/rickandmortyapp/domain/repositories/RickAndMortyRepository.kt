@@ -1,5 +1,6 @@
 package com.example.rickandmortyapp.domain.repositories
 
+import android.util.Log
 import com.example.rickandmortyapp.data.remote.CharacterDto
 import com.example.rickandmortyapp.data.remote.RickAndMortyApi
 import com.example.rickandmortyapp.data.remote.RickAndMortyResponse
@@ -28,4 +29,25 @@ class RickAndMortyRepository @Inject constructor(
         return Resource.Success(response)
     }
 
+    suspend fun getFilteredCharacters(
+        name: String? = null,
+        status: String? = null,
+        species: String? = null,
+        type: String? = null,
+        gender: String? = null
+    ): Resource<RickAndMortyResponse> {
+        val response = try {
+            api.getFilteredCharacters(
+                name = name,
+                status = status,
+                species = species,
+                type = type,
+                gender = gender
+            )
+        } catch (e: Exception) {
+            Log.d("rickandmortyrepository", "getFilteredCharacters: ")
+            return Resource.Error("Something went wrong")
+        }
+        return Resource.Success(response)
+    }
 }

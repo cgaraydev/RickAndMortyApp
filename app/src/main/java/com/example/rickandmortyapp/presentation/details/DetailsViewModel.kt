@@ -16,5 +16,4 @@ class DetailsViewModel @Inject constructor(
         return repository.getCharacterById(id)
     }
 
-
 }

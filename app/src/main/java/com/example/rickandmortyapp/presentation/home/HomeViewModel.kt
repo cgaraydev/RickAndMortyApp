@@ -19,7 +19,9 @@ class HomeViewModel @Inject constructor(
     val characterPagingFlow = pager
         .flow
         .map { pagingData ->
-            pagingData.map { it.toCharacter() }
+            pagingData.map {
+                it.toCharacter()
+            }
         }
         .cachedIn(viewModelScope)
 

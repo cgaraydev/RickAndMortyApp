@@ -19,7 +19,7 @@ fun RickAndMortyNavigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = RickAndMortyScreens.HomeScreen.name
+        startDestination = RickAndMortyScreens.SearchScreen.name
     ) {
         composable(RickAndMortyScreens.SplashScreen.name) {
             SplashScreen(navController)
